@@ -13,6 +13,7 @@ class _InformationPageState extends State<InformationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar:  AppBar(
+      elevation: 0,
       centerTitle: true,
       title: Text(
         "INFORMATION",

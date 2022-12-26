@@ -31,13 +31,14 @@ class _LandingPageState extends State<LandingPage> {
         padding: const EdgeInsets.all(8.0),
         child: pageIndex == 0 ?  FloatingActionButton(
           // isExtended: true,
-          child:  Icon(Icons.add,
-          size: 30,),
           backgroundColor: Colors.blue,
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) =>  const CheckerPage()));
           },
+          // isExtended: true,
+          child:  const Icon(Icons.add,
+          size: 30,),
         ): null,
       ),
     );
@@ -63,12 +64,12 @@ class _LandingPageState extends State<LandingPage> {
                     ? const Icon(
                         Icons.favorite,
                         color: Colors.white,
-                        size: 30,
+                        size: 25,
                       )
                     : const Icon(
                         Icons.favorite_border,
                         color: Colors.white,
-                        size: 30,
+                        size: 25,
                       ),
               ),
               const Text(
@@ -76,7 +77,8 @@ class _LandingPageState extends State<LandingPage> {
                 style: TextStyle(
                     fontFamily: 'saira',
                     color: Colors.white,
-                    fontWeight: FontWeight.bold),
+                    fontWeight: FontWeight.bold,
+                fontSize: 12),
               )
             ],
           ),
@@ -93,12 +95,12 @@ class _LandingPageState extends State<LandingPage> {
                     ? const Icon(
                         Icons.work_history,
                         color: Colors.white,
-                        size: 30,
+                        size: 25,
                       )
                     : const Icon(
                         Icons.work_history_outlined,
                         color: Colors.white,
-                        size: 30,
+                        size: 25,
                       ),
               ),
               Text(
@@ -106,7 +108,8 @@ class _LandingPageState extends State<LandingPage> {
                 style: TextStyle(
                     fontFamily: 'saira',
                     color: Colors.white,
-                    fontWeight: FontWeight.bold),
+                    fontWeight: FontWeight.bold,
+                fontSize: 12),
               )
             ],
           ),
@@ -123,20 +126,21 @@ class _LandingPageState extends State<LandingPage> {
                     ? const Icon(
                         Icons.info,
                         color: Colors.white,
-                        size: 30,
+                        size: 25,
                       )
                     : const Icon(
                         Icons.info_outline,
                         color: Colors.white,
-                        size: 30,
+                        size: 25,
                       ),
               ),
-              Text(
+              const Text(
                 "INFO",
                 style: TextStyle(
                     fontFamily: 'saira',
                     color: Colors.white,
-                    fontWeight: FontWeight.bold),
+                    fontWeight: FontWeight.bold,
+                fontSize: 12),
               )
             ],
           ),
