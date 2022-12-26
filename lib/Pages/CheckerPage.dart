@@ -13,30 +13,70 @@ class CheckerPage extends StatefulWidget {
 class _CheckerPageState extends State<CheckerPage> {
   int _currentSys = 50;
   int _currentDia = 50;
-  int _currentPulse = 50;
+  int _currentPulse = 20;
+  String bloodPressure = "Normal Blood Pressure";
 
   // This function will be passed down to the Child widget.
   void appendDia(int dia) {
     setState(() {
-      this._currentDia = dia;
+      _currentDia = dia;
     });
     print(_currentDia.toString());
+    calculateBloodPressure();
   }
 
   // This function will be passed down to the Child widget.
   void appendPulse(int dia) {
     setState(() {
-      this._currentPulse = dia;
+      _currentPulse = dia;
     });
     print(_currentPulse.toString());
+    calculateBloodPressure();
   }
 
   // This function will be passed down to the Child widget.
   void appendSys(int dia) {
     setState(() {
-      this._currentSys = dia;
+      _currentSys = dia;
     });
     print(_currentSys.toString());
+    calculateBloodPressure();
+  }
+
+  calculateBloodPressure() {
+    print("current stat $bloodPressure");
+
+    if (_currentSys < 120 && _currentDia < 80) {
+      setState(() {
+        bloodPressure = "Normal Blood Pressure";
+      });
+    } else {
+      if (_currentSys > 119 && _currentSys < 130) {
+        if (_currentDia < 80) {
+          setState(() {
+            bloodPressure = "Elevated Blood Pressure";
+          });
+        }
+      }
+
+      if (_currentSys > 129 || _currentDia > 79) {
+        setState(() {
+          bloodPressure = "High Blood Pressure - Stage 1";
+        });
+      }
+
+      if (_currentSys > 139 || _currentDia > 89) {
+        setState(() {
+          bloodPressure = "High Blood Pressure - Stage 2";
+        });
+      }
+
+      if (_currentSys > 180 || _currentDia > 120) {
+        setState(() {
+          bloodPressure = "Dangerously High Blood Pressure";
+        });
+      }
+    }
   }
 
   @override
@@ -44,24 +84,34 @@ class _CheckerPageState extends State<CheckerPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "NEW RECORD",
           style: TextStyle(
               fontSize: 25, fontWeight: FontWeight.bold, fontFamily: 'saira'),
         ),
       ),
       body: Container(
-          child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: Column(
           children: [
-            SystolicNum(callback: appendSys),
-            Diastolic(callback: appendDia),
-            Pulse(callback: appendPulse),
+            Center(
+                child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(bloodPressure.toString()),
+            )),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SystolicNum(callback: appendSys),
+                  Diastolic(callback: appendDia),
+                  Pulse(callback: appendPulse),
+                ],
+              ),
+            ),
           ],
         ),
-      )),
+      ),
     );
   }
 }

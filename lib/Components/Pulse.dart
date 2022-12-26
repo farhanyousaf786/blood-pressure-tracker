@@ -13,7 +13,7 @@ class Pulse extends StatefulWidget {
 
 class _PulseState extends State<Pulse> {
   //init value of sys meter
-  int _currentIntValue = 50;
+  int _currentIntValue = 20;
 
   @override
   Widget build(BuildContext context) {
