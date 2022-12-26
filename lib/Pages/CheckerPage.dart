@@ -22,7 +22,6 @@ class _CheckerPageState extends State<CheckerPage> {
   String text =
       "Blood pressure numbers of less than 120/80 mm Hg are considered within the normal range. If your results fall into this category, stick with heart-healthy habits like following a balanced diet and getting regular exercise.";
 
-
   // This function will be passed down to the Child widget.
   void appendDia(int dia) {
     setState(() {
@@ -58,8 +57,7 @@ class _CheckerPageState extends State<CheckerPage> {
         bloodPressure = "Normal Blood Pressure";
         currentColor = Colors.green;
         text =
-        "Blood pressure numbers of less than 120/80 mm Hg are considered within the normal range. If your results fall into this category, stick with heart-healthy habits like following a balanced diet and getting regular exercise.";
-
+            "Blood pressure numbers of less than 120/80 mm Hg are considered within the normal range. If your results fall into this category, stick with heart-healthy habits like following a balanced diet and getting regular exercise.";
       });
     } else {
       if (_currentSys > 119 && _currentSys < 130) {
@@ -69,8 +67,7 @@ class _CheckerPageState extends State<CheckerPage> {
             currentColor = Colors.yellow.shade700;
             currentState == "stage1";
             text =
-            "Elevated blood pressure is when readings consistently range from 120-129 systolic and less than 80 mm Hg diastolic. People with elevated blood pressure are likely to develop high blood pressure unless steps are taken to control the condition.";
-
+                "Elevated blood pressure is when readings consistently range from 120-129 systolic and less than 80 mm Hg diastolic. People with elevated blood pressure are likely to develop high blood pressure unless steps are taken to control the condition.";
           });
         }
       }
@@ -78,11 +75,10 @@ class _CheckerPageState extends State<CheckerPage> {
       if (_currentSys > 129 || _currentDia > 79) {
         setState(() {
           bloodPressure = "High Blood Pressure - Stage 1";
-          currentColor = Colors.orangeAccent.shade200;
+          currentColor = Colors.orangeAccent.shade400;
           currentState == "stage2";
           text =
-          "Hypertension Stage 1 is when blood pressure consistently ranges from 130-139 systolic or 80-89 mm Hg diastolic. At this stage of high blood pressure, doctors are likely to prescribe lifestyle changes and may consider adding blood pressure medication based on your risk of atherosclerotic cardiovascular disease (ASCVD), such as heart attack or stroke.";
-
+              "Hypertension Stage 1 is when blood pressure consistently ranges from 130-139 systolic or 80-89 mm Hg diastolic. At this stage of high blood pressure, doctors are likely to prescribe lifestyle changes and may consider adding blood pressure medication based on your risk of atherosclerotic cardiovascular disease (ASCVD), such as heart attack or stroke.";
         });
       }
 
@@ -92,7 +88,7 @@ class _CheckerPageState extends State<CheckerPage> {
           currentColor = Colors.deepOrange.shade400;
           currentState == "stage3";
           text =
-          "Hypertension Stage 2 is when blood pressure consistently ranges at 140/90 mm Hg or higher. At this stage of high blood pressure, doctors are likely to prescribe a combination of blood pressure medications and lifestyle changes.";
+              "Hypertension Stage 2 is when blood pressure consistently ranges at 140/90 mm Hg or higher. At this stage of high blood pressure, doctors are likely to prescribe a combination of blood pressure medications and lifestyle changes.";
         });
       }
 
@@ -102,7 +98,7 @@ class _CheckerPageState extends State<CheckerPage> {
           currentColor = Colors.red.shade700;
           currentState == "stage4";
           text =
-          "This stage of high blood pressure requires medical attention. If your blood pressure readings suddenly exceed 180/120 mm Hg, wait five minutes and then test your blood pressure again. If your readings are still unusually high, contact your doctor immediately. You could be experiencing a hypertensive crisis.";
+              "This stage of high blood pressure requires medical attention. If your blood pressure readings suddenly exceed 180/120 mm Hg, wait five minutes and then test your blood pressure again. If your readings are still unusually high, contact your doctor immediately. You could be experiencing a hypertensive crisis.";
         });
       }
     }
@@ -112,17 +108,20 @@ class _CheckerPageState extends State<CheckerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         centerTitle: true,
         title: const Text(
           "NEW RECORD",
           style: TextStyle(
-              fontSize: 25, fontWeight: FontWeight.bold, fontFamily: 'saira'),
+              fontSize: 22, fontWeight: FontWeight.bold, fontFamily: 'saira'),
         ),
       ),
       body: Container(
         child: Column(
           children: [
-
+            SizedBox(
+              height: 20,
+            ),
             Center(
                 child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -153,21 +152,33 @@ class _CheckerPageState extends State<CheckerPage> {
                 ],
               ),
             ),
-            const Center(child:  Text(
-              "Explanation",
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 25,
-                color: Colors.blue,
-                fontFamily: 'saira'
+            const Center(
+              child: Text(
+                "Explanation",
+                style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 25,
+                    color: Colors.blue,
+                    fontFamily: 'saira'),
               ),
-            ),),
-            ExplainState(text: text)
-
+            ),
+            ExplainState(text: text),
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 2,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  "SAVE IT",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 22,
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
     );
   }
-
 }

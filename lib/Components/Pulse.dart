@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
@@ -17,40 +16,47 @@ class _PulseState extends State<Pulse> {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 7),
-          child: Text('Pulse', style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.blue.shade50,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(3.0),
+        child: Column(
+          children: [
+            Text(
+              'Pulse',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              '(BMP)',
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            NumberPicker(
+              value: _currentIntValue,
+              minValue: 10,
+              maxValue: 200,
+              step: 1,
+              haptics: true,
+              onChanged: (value) => setState(() => {
+                    _currentIntValue = value,
+                    widget.callback(_currentIntValue)
+                  }),
+              textStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                  color: Colors.blue.withOpacity(0.4)),
+            ),
+          ],
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 7),
-          child: Text('(BMP)', style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.bold,
-          ),),
-        ),
-
-        NumberPicker(
-          value: _currentIntValue,
-          minValue: 10,
-          maxValue: 200,
-          step: 1,
-          haptics: true,
-          onChanged: (value) => setState(() =>
-    {_currentIntValue = value, widget.callback(_currentIntValue)}),
-
-
-          textStyle: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 15,
-              color: Colors.blue.withOpacity(0.4)
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
