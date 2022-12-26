@@ -10,7 +10,6 @@ class GeneralStats extends StatefulWidget {
 }
 
 class _GeneralStatsState extends State<GeneralStats> {
-
   @override
   void initState() {
     setState(() {
@@ -18,6 +17,7 @@ class _GeneralStatsState extends State<GeneralStats> {
     });
     super.initState();
   }
+
   var db = DatabaseConnect();
 
   @override
@@ -39,7 +39,7 @@ class _GeneralStatsState extends State<GeneralStats> {
             var data = snapshot.data;
             var dataLength = data!.length;
             return dataLength == 0
-                ?  Center(
+                ? Center(
                     child: Padding(
                       padding: EdgeInsets.all(12.0),
                       child: Column(
@@ -47,16 +47,188 @@ class _GeneralStatsState extends State<GeneralStats> {
                           Material(
                             elevation: 5,
                             borderRadius: BorderRadius.circular(10),
+                            color: Colors.red.shade200,
                             child: Container(
-                              height: MediaQuery.of(context).size.height/5,
-                              width: MediaQuery.of(context).size.width/1.01,
-                              child: const Text(
-                                "No Record Found!",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.blue,
-                                  fontFamily: 'bal'
+                              height: MediaQuery.of(context).size.height / 5,
+                              width: MediaQuery.of(context).size.width / 1.01,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 20, right: 20, top: 8, bottom: 8),
+                                child: Column(
+                                  children: [
+                                     Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Text(
+                                        "High",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w700,
+                                            color: Colors.red.shade900,
+                                            fontFamily: 'bal'),
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children:  [
+                                        Text(
+                                          "Systolic",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.red.shade900,
+                                              fontFamily: 'bal'),
+                                        ),
+                                        Text(
+                                          "0",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.black,
+                                              fontFamily: 'bal'),
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5, bottom: 5),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children:  [
+                                          Text(
+                                            "Diastolic",
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w700,
+                                                color: Colors.red.shade900,
+                                                fontFamily: 'bal'),
+                                          ),
+                                          Text(
+                                            "0",
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w700,
+                                                color: Colors.black,
+                                                fontFamily: 'bal'),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children:  [
+                                        Text(
+                                          "Pulse",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.red.shade900,
+                                              fontFamily: 'bal'),
+                                        ),
+                                        Text(
+                                          "0",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.black,
+                                              fontFamily: 'bal'),
+                                        ),
+                                      ],
+                                    )
+
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 20,),
+                          Material(
+                            elevation: 5,
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.blue.shade200,
+                            child: Container(
+                              height: MediaQuery.of(context).size.height / 5,
+                              width: MediaQuery.of(context).size.width / 1.01,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 20, right: 20, top: 8, bottom: 8),
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Text(
+                                        "Low",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w700,
+                                            color: Colors.blue.shade900,
+                                            fontFamily: 'bal'),
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children:  [
+                                        Text(
+                                          "Systolic",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.blue.shade900,
+                                              fontFamily: 'bal'),
+                                        ),
+                                        Text(
+                                          "0",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.black,
+                                              fontFamily: 'bal'),
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5, bottom: 5),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children:  [
+                                          Text(
+                                            "Diastolic",
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w700,
+                                                color: Colors.blue.shade900,
+                                                fontFamily: 'bal'),
+                                          ),
+                                          Text(
+                                            "0",
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w700,
+                                                color: Colors.black,
+                                                fontFamily: 'bal'),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children:  [
+                                        Text(
+                                          "Pulse",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.blue.shade900,
+                                              fontFamily: 'bal'),
+                                        ),
+                                        Text(
+                                          "0",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.black,
+                                              fontFamily: 'bal'),
+                                        ),
+                                      ],
+                                    )
+
+                                  ],
                                 ),
                               ),
                             ),
