@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class Pulse extends StatefulWidget {
-  const Pulse({Key? key}) : super(key: key);
+  final void Function(int) callback;
+
+  const Pulse({Key? key, required this.callback}) : super(key: key);
 
   @override
   State<Pulse> createState() => _PulseState();
@@ -38,7 +40,10 @@ class _PulseState extends State<Pulse> {
           maxValue: 200,
           step: 1,
           haptics: true,
-          onChanged: (value) => setState(() => _currentIntValue = value),
+          onChanged: (value) => setState(() =>
+    {_currentIntValue = value, widget.callback(_currentIntValue)}),
+
+
           textStyle: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 15,

@@ -11,11 +11,9 @@ class CheckerPage extends StatefulWidget {
 }
 
 class _CheckerPageState extends State<CheckerPage> {
-
-   int _currentSys = 50;
-   int _currentDia = 50;
-   int _currentPulse = 50;
-
+  int _currentSys = 50;
+  int _currentDia = 50;
+  int _currentPulse = 50;
 
   // This function will be passed down to the Child widget.
   void appendDia(int dia) {
@@ -25,8 +23,21 @@ class _CheckerPageState extends State<CheckerPage> {
     print(_currentDia.toString());
   }
 
+  // This function will be passed down to the Child widget.
+  void appendPulse(int dia) {
+    setState(() {
+      this._currentPulse = dia;
+    });
+    print(_currentPulse.toString());
+  }
 
-
+  // This function will be passed down to the Child widget.
+  void appendSys(int dia) {
+    setState(() {
+      this._currentSys = dia;
+    });
+    print(_currentSys.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,21 +52,16 @@ class _CheckerPageState extends State<CheckerPage> {
       ),
       body: Container(
           child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-            SystolicNum(),
-            Diastolic(
-
-                callback: this.appendDia // passing a function as a parameter
-
-
-            ),
-            Pulse(),
-        ],
-      ),
-          )),
+        padding: const EdgeInsets.all(15.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SystolicNum(callback: appendSys),
+            Diastolic(callback: appendDia),
+            Pulse(callback: appendPulse),
+          ],
+        ),
+      )),
     );
   }
 }
