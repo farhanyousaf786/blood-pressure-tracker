@@ -9,7 +9,6 @@ class HistoryCard extends StatefulWidget {
   final String dia;
   final String pulse;
   final DateTime creationDate;
-  final Function insertFunction;
   final Function deleteFunction;
 
   const HistoryCard(
@@ -19,7 +18,6 @@ class HistoryCard extends StatefulWidget {
       required this.dia,
       required this.pulse,
       required this.creationDate,
-      required this.insertFunction,
       required this.deleteFunction})
       : super(key: key);
 
@@ -58,24 +56,15 @@ class _HistoryCardState extends State<HistoryCard> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(widget.creationDate.toString()),
-              GestureDetector(onTap: () {
-
-                deleteItem(anOtherBpInfo);
-
-
-              }, child: Text("Delete"))
+              IconButton(
+                onPressed: ()=> widget.deleteFunction(anOtherBpInfo),
+                icon: const Icon(Icons.close),
+              ),
             ],
           ),
         )
       ],
     );
   }
-  // create a database object so we can access database functions
-  var db = DatabaseConnect();
-  // function to delete BP
-  void deleteItem(BpInfo bpInfo) async {
-    await db.deleteBpRecord(bpInfo);
-    setState(() {});
 
-  }
 }

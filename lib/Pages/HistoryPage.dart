@@ -25,6 +25,6 @@ class _HistoryState extends State<History> {
                 fontSize: 25, fontWeight: FontWeight.bold, fontFamily: 'saira'),
           ),
         ),
-        body: const ShowBpRecord());
+        body:  ShowBpRecord());
   }
 }

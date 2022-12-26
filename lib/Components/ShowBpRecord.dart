@@ -1,10 +1,12 @@
 import 'package:bloodpressure/Components/HistoryCard.dart';
 import 'package:flutter/material.dart';
 
+import '../Database/BpModel.dart';
 import '../Database/DbModel.dart';
 
 class ShowBpRecord extends StatefulWidget {
-  const ShowBpRecord({Key? key}) : super(key: key);
+  
+   const ShowBpRecord({Key? key,}) : super(key: key);
 
   @override
   State<ShowBpRecord> createState() => _ShowBpRecordState();
@@ -35,11 +37,18 @@ class _ShowBpRecordState extends State<ShowBpRecord> {
                       dia: data[i].dia,
                       pulse: data[i].pulse,
                       creationDate: data[i].creationDate,
-                      insertFunction: () {},
-                      deleteFunction: () {});
+                      deleteFunction: deleteItem);
                 },
               );
       },
     );
   }
+  
+  // function to delete BP
+  void deleteItem(BpInfo bpInfo) async {
+    await db.deleteBpRecord(bpInfo);
+    setState(() {});
+
+  }
+  
 }
