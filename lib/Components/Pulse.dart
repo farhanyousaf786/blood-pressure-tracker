@@ -1,14 +1,15 @@
+
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-class SystolicNum extends StatefulWidget {
-  const SystolicNum({Key? key}) : super(key: key);
+class Pulse extends StatefulWidget {
+  const Pulse({Key? key}) : super(key: key);
 
   @override
-  State<SystolicNum> createState() => _SystolicNumState();
+  State<Pulse> createState() => _PulseState();
 }
 
-class _SystolicNumState extends State<SystolicNum> {
+class _PulseState extends State<Pulse> {
   //init value of sys meter
   int _currentIntValue = 50;
 
@@ -18,14 +19,14 @@ class _SystolicNumState extends State<SystolicNum> {
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 7),
-          child: Text('Systolic', style: TextStyle(
+          child: Text('Pulse', style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 7),
-          child: Text('(mmHg)', style: TextStyle(
+          child: Text('(BMP)', style: TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.bold,
           ),),
@@ -34,13 +35,13 @@ class _SystolicNumState extends State<SystolicNum> {
         NumberPicker(
           value: _currentIntValue,
           minValue: 20,
-          maxValue: 300,
+          maxValue: 200,
           step: 1,
           haptics: true,
           onChanged: (value) => setState(() => _currentIntValue = value),
           textStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 15,
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
               color: Colors.blue.withOpacity(0.4)
           ),
         ),
