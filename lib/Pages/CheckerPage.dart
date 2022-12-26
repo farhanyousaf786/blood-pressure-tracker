@@ -15,6 +15,7 @@ class _CheckerPageState extends State<CheckerPage> {
   int _currentDia = 50;
   int _currentPulse = 20;
   String bloodPressure = "Normal Blood Pressure";
+  Color currentColor = Colors.green;
 
   // This function will be passed down to the Child widget.
   void appendDia(int dia) {
@@ -49,12 +50,14 @@ class _CheckerPageState extends State<CheckerPage> {
     if (_currentSys < 120 && _currentDia < 80) {
       setState(() {
         bloodPressure = "Normal Blood Pressure";
+        currentColor = Colors.green;
       });
     } else {
       if (_currentSys > 119 && _currentSys < 130) {
         if (_currentDia < 80) {
           setState(() {
             bloodPressure = "Elevated Blood Pressure";
+            currentColor= Colors.yellow.shade600;
           });
         }
       }
@@ -62,18 +65,21 @@ class _CheckerPageState extends State<CheckerPage> {
       if (_currentSys > 129 || _currentDia > 79) {
         setState(() {
           bloodPressure = "High Blood Pressure - Stage 1";
+          currentColor= Colors.orangeAccent;
         });
       }
 
       if (_currentSys > 139 || _currentDia > 89) {
         setState(() {
           bloodPressure = "High Blood Pressure - Stage 2";
+          currentColor = Colors.deepOrange;
         });
       }
 
       if (_currentSys > 180 || _currentDia > 120) {
         setState(() {
           bloodPressure = "Dangerously High Blood Pressure";
+          currentColor =Colors.red;
         });
       }
     }
@@ -96,7 +102,13 @@ class _CheckerPageState extends State<CheckerPage> {
             Center(
                 child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(bloodPressure.toString()),
+              child: Container(
+
+                color: currentColor,
+
+
+                  child: Text(bloodPressure.toString(),
+                  style: TextStyle(),)),
             )),
             Padding(
               padding: const EdgeInsets.all(15.0),

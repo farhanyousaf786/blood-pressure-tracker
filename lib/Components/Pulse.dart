@@ -36,7 +36,7 @@ class _PulseState extends State<Pulse> {
 
         NumberPicker(
           value: _currentIntValue,
-          minValue: 20,
+          minValue: 10,
           maxValue: 200,
           step: 1,
           haptics: true,
