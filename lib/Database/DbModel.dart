@@ -32,13 +32,13 @@ class DatabaseConnect {
         sys TEXT,
         dia TEXT,
         pulse TEXT,
-        creationDate TEXT,
+        creationDate TEXT
       )
     ''');
   }
 
   // function to add data into our database
-  Future<void> insertTodo(BpInfo bpInfo) async {
+  Future<void> insertBpRecord(BpInfo bpInfo) async {
     // get the connection to database
     final db = await database;
     // insert the bpData
@@ -51,7 +51,7 @@ class DatabaseConnect {
   }
 
   // function to delete a  bpData from our database
-  Future<void> deleteTodo(BpInfo bpInfo) async {
+  Future<void> deleteBpRecord(BpInfo bpInfo) async {
     final db = await database;
     // delete the bpData from database based on its id.
     await db.delete(
@@ -62,7 +62,7 @@ class DatabaseConnect {
   }
 
   // function to fetch all the bpData data from our database
-  Future<List<BpInfo>> getTodo() async {
+  Future<List<BpInfo>> getBpRecord() async {
     final db = await database;
     // query the database and save the bpData as list of maps
     List<Map<String, dynamic>> items = await db.query(
@@ -90,7 +90,7 @@ class DatabaseConnect {
   // ------- not included in video--------
 
   // function for updating a bpData in todoList
-  Future<void> updateTodo(int id, String sys) async {
+  Future<void> updateBpRecord(int id, String sys) async {
     final db = await database;
 
     await db.update(

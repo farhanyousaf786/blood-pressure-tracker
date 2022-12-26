@@ -1,8 +1,19 @@
+import 'package:bloodpressure/Database/BpModel.dart';
+import 'package:bloodpressure/Database/DbModel.dart';
 import 'package:bloodpressure/Pages/LandingPage.dart';
 import 'package:flutter/material.dart';
 
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  var db = DatabaseConnect();
+  //insert simple rec
+  await db.insertBpRecord(BpInfo(
+      id: 1,
+      sys: "100",
+      dia: "100",
+      pulse: "50",
+      creationDate: DateTime.now()));
+  print(await db.getBpRecord());
   runApp(const MyApp());
 }
 
@@ -22,17 +33,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -98,15 +98,15 @@ class _HomePageState extends State<HomePage> {
             },
             icon: pageIndex == 0
                 ? const Icon(
-              Icons.home_filled,
-              color: Colors.white,
-              size: 35,
-            )
+                    Icons.home_filled,
+                    color: Colors.white,
+                    size: 35,
+                  )
                 : const Icon(
-              Icons.home_outlined,
-              color: Colors.white,
-              size: 35,
-            ),
+                    Icons.home_outlined,
+                    color: Colors.white,
+                    size: 35,
+                  ),
           ),
           IconButton(
             enableFeedback: false,
@@ -117,15 +117,15 @@ class _HomePageState extends State<HomePage> {
             },
             icon: pageIndex == 1
                 ? const Icon(
-              Icons.work_rounded,
-              color: Colors.white,
-              size: 35,
-            )
+                    Icons.work_rounded,
+                    color: Colors.white,
+                    size: 35,
+                  )
                 : const Icon(
-              Icons.work_outline_outlined,
-              color: Colors.white,
-              size: 35,
-            ),
+                    Icons.work_outline_outlined,
+                    color: Colors.white,
+                    size: 35,
+                  ),
           ),
           IconButton(
             enableFeedback: false,
@@ -136,15 +136,15 @@ class _HomePageState extends State<HomePage> {
             },
             icon: pageIndex == 2
                 ? const Icon(
-              Icons.widgets_rounded,
-              color: Colors.white,
-              size: 35,
-            )
+                    Icons.widgets_rounded,
+                    color: Colors.white,
+                    size: 35,
+                  )
                 : const Icon(
-              Icons.widgets_outlined,
-              color: Colors.white,
-              size: 35,
-            ),
+                    Icons.widgets_outlined,
+                    color: Colors.white,
+                    size: 35,
+                  ),
           ),
           IconButton(
             enableFeedback: false,
@@ -155,15 +155,15 @@ class _HomePageState extends State<HomePage> {
             },
             icon: pageIndex == 3
                 ? const Icon(
-              Icons.person,
-              color: Colors.white,
-              size: 35,
-            )
+                    Icons.person,
+                    color: Colors.white,
+                    size: 35,
+                  )
                 : const Icon(
-              Icons.person_outline,
-              color: Colors.white,
-              size: 35,
-            ),
+                    Icons.person_outline,
+                    color: Colors.white,
+                    size: 35,
+                  ),
           ),
         ],
       ),
@@ -254,6 +254,3 @@ class Page4 extends StatelessWidget {
     );
   }
 }
-
-
-
