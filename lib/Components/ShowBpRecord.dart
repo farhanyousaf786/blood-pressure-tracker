@@ -5,8 +5,9 @@ import '../Database/BpModel.dart';
 import '../Database/DbModel.dart';
 
 class ShowBpRecord extends StatefulWidget {
-  
-   const ShowBpRecord({Key? key,}) : super(key: key);
+  const ShowBpRecord({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<ShowBpRecord> createState() => _ShowBpRecordState();
@@ -14,7 +15,6 @@ class ShowBpRecord extends StatefulWidget {
 
 class _ShowBpRecordState extends State<ShowBpRecord> {
   var db = DatabaseConnect();
-
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,17 @@ class _ShowBpRecordState extends State<ShowBpRecord> {
         var dataLength = data!.length;
         return dataLength == 0
             ? const Center(
-                child: Text("No Record Found"),
+                child: Padding(
+                  padding: EdgeInsets.all(12.0),
+                  child: Text(
+                    "No Record Found!",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
               )
             : ListView.builder(
                 itemCount: dataLength,
@@ -44,12 +54,10 @@ class _ShowBpRecordState extends State<ShowBpRecord> {
       },
     );
   }
-  
+
   // function to delete BP
   void deleteItem(BpInfo bpInfo) async {
     await db.deleteBpRecord(bpInfo);
     setState(() {});
-
   }
-  
 }

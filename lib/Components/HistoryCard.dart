@@ -51,11 +51,11 @@ class _HistoryCardState extends State<HistoryCard> {
               child: Text(
                 DateFormat('hh:mm aaa - dd/MMM/yyyy')
                     .format(widget.creationDate),
-                style: const TextStyle(
+                style:  TextStyle(
                     fontFamily: 'bal',
                     fontWeight: FontWeight.w600,
                     fontSize: 12,
-                    color: Colors.black54),
+                    color: Colors.blue.shade800),
               ),
             ),
             Container(
@@ -88,8 +88,7 @@ class _HistoryCardState extends State<HistoryCard> {
                 SizedBox(
                   width: MediaQuery.of(context).size.width / 3,
                   child: Padding(
-                    padding:
-                        const EdgeInsets.only(left: 30, top: 10, bottom: 2),
+                    padding: const EdgeInsets.only(left: 0, top: 8, bottom: 10),
                     child: Column(
                       children: [
                         Row(
@@ -150,38 +149,32 @@ class _HistoryCardState extends State<HistoryCard> {
                     ),
                   ),
                 ),
-                // SizedBox(
-                //   width: MediaQuery.of(context).size.width / 3,
-                //   child: Icon(Icons.favorite,
-                //       size: 70,
-                //       color: widget.bpCondition == "Normal Blood Pressure"
-                //           ? Colors.green
-                //           : widget.bpCondition == "Elevated Blood Pressure"
-                //               ? Colors.yellow.shade700
-                //               : widget.bpCondition ==
-                //                       "High Blood Pressure - Stage 1"
-                //                   ? Colors.orangeAccent.shade400
-                //                   : widget.bpCondition ==
-                //                           "High Blood Pressure - Stage 2"
-                //                       ? Colors.deepOrange.shade400
-                //                       : Colors.red.shade700),
-                // ),
-
-
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 12, top: 10,),
+                  padding: const EdgeInsets.only(
+                    bottom: 12,
+                    top: 10,
+                  ),
                   child: Column(
                     children: [
-                      GestureDetector(
-                        onTap: () => widget.deleteFunction(anOtherBpInfo),
-                        child:  Padding(
-                          padding: EdgeInsets.only(
-                              left: 20, right: 20, bottom: 6, top: 6),
-                          child: Icon(Icons.share,
-                          color: Colors.blue.shade700,)
-                        ),
+                      SizedBox(
+                        child: Icon(Icons.favorite,
+                            size: 30,
+                            color: widget.bpCondition == "Normal Blood Pressure"
+                                ? Colors.green
+                                : widget.bpCondition ==
+                                        "Elevated Blood Pressure"
+                                    ? Colors.yellow.shade700
+                                    : widget.bpCondition ==
+                                            "High Blood Pressure - Stage 1"
+                                        ? Colors.orangeAccent.shade400
+                                        : widget.bpCondition ==
+                                                "High Blood Pressure - Stage 2"
+                                            ? Colors.deepOrange.shade400
+                                            : Colors.red.shade700),
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 6,
+                      ),
                       GestureDetector(
                         onTap: () => widget.deleteFunction(anOtherBpInfo),
                         child: Container(
@@ -189,7 +182,7 @@ class _HistoryCardState extends State<HistoryCard> {
                             borderRadius: BorderRadius.circular(12),
                             color: Colors.blue.shade700,
                           ),
-                          child:  Padding(
+                          child: Padding(
                             padding: EdgeInsets.only(
                                 left: 20, right: 20, bottom: 3, top: 3),
                             child: Text(
@@ -207,10 +200,8 @@ class _HistoryCardState extends State<HistoryCard> {
                     ],
                   ),
                 )
-
               ],
             ),
-
           ],
         ),
       ),

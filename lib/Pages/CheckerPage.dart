@@ -117,7 +117,7 @@ class _CheckerPageState extends State<CheckerPage> {
         title: const Text(
           "NEW RECORD",
           style: TextStyle(
-              fontSize: 22, fontWeight: FontWeight.bold, fontFamily: 'saira'),
+              fontSize: 21, fontWeight: FontWeight.bold, fontFamily: 'saira'),
         ),
       ),
       body: Container(
@@ -139,7 +139,7 @@ class _CheckerPageState extends State<CheckerPage> {
                     child: Text(
                       bloodPressure.toString(),
                       style: const TextStyle(
-                          fontSize: 15,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           color: Colors.white),
                     ),
@@ -180,10 +180,10 @@ class _CheckerPageState extends State<CheckerPage> {
                   addItem(bpInfo);
                 },
                 child: const Text(
-                  "SAVE IT",
+                  "Save Record",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
-                    fontSize: 22,
+                    fontSize: 16,
                   ),
                 ),
               ),
