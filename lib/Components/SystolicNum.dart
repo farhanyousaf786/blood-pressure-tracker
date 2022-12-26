@@ -11,6 +11,7 @@ class SystolicNum extends StatefulWidget {
 }
 
 class _SystolicNumState extends State<SystolicNum> {
+  //init value of sys meter
   int _currentIntValue = 50;
 
   @override
@@ -33,7 +34,6 @@ class _SystolicNumState extends State<SystolicNum> {
         ),
 
         NumberPicker(
-
           value: _currentIntValue,
           minValue: 20,
           maxValue: 300,
@@ -44,7 +44,6 @@ class _SystolicNumState extends State<SystolicNum> {
             fontWeight: FontWeight.bold,
             fontSize: 15,
               color: Colors.blue.withOpacity(0.4)
-
           ),
         ),
       ],
