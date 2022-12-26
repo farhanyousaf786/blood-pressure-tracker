@@ -11,21 +11,18 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-
   int pageIndex = 0;
 
   final pages = [
     const GeneralStats(),
     const History(),
     const InformationPage(),
-
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffC4DFCB),
-
       body: pages[pageIndex],
       bottomNavigationBar: buildMyNavBar(context),
     );
@@ -33,75 +30,101 @@ class _LandingPageState extends State<LandingPage> {
 
   Container buildMyNavBar(BuildContext context) {
     return Container(
-      height: 60,
-      decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-      ),
+      height: 80,
+      color: Colors.blue,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          IconButton(
-            enableFeedback: false,
-            onPressed: () {
-              setState(() {
-                pageIndex = 0;
-              });
-            },
-            icon: pageIndex == 0
-                ? const Icon(
-              Icons.home_filled,
-              color: Colors.white,
-              size: 35,
-            )
-                : const Icon(
-              Icons.home_outlined,
-              color: Colors.white,
-              size: 35,
-            ),
+          Column(
+            children: [
+              IconButton(
+                enableFeedback: false,
+                onPressed: () {
+                  setState(() {
+                    pageIndex = 0;
+                  });
+                },
+                icon: pageIndex == 0
+                    ? const Icon(
+                        Icons.favorite,
+                        color: Colors.white,
+                        size: 30,
+                      )
+                    : const Icon(
+                        Icons.favorite_border,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+              ),
+              Text(
+                "TRACKER",
+                style: TextStyle(
+                    fontFamily: 'saira',
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              )
+            ],
           ),
-          IconButton(
-            enableFeedback: false,
-            onPressed: () {
-              setState(() {
-                pageIndex = 1;
-              });
-            },
-            icon: pageIndex == 1
-                ? const Icon(
-              Icons.work_rounded,
-              color: Colors.white,
-              size: 35,
-            )
-                : const Icon(
-              Icons.work_outline_outlined,
-              color: Colors.white,
-              size: 35,
-            ),
+          Column(
+            children: [
+              IconButton(
+                enableFeedback: false,
+                onPressed: () {
+                  setState(() {
+                    pageIndex = 1;
+                  });
+                },
+                icon: pageIndex == 1
+                    ? const Icon(
+                        Icons.work_history,
+                        color: Colors.white,
+                        size: 30,
+                      )
+                    : const Icon(
+                        Icons.work_history_outlined,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+              ),
+              Text(
+                "HISTORY",
+                style: TextStyle(
+                    fontFamily: 'saira',
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              )
+            ],
           ),
-          IconButton(
-            enableFeedback: false,
-            onPressed: () {
-              setState(() {
-                pageIndex = 2;
-              });
-            },
-            icon: pageIndex == 2
-                ? const Icon(
-              Icons.widgets_rounded,
-              color: Colors.white,
-              size: 35,
-            )
-                : const Icon(
-              Icons.widgets_outlined,
-              color: Colors.white,
-              size: 35,
-            ),
+          Column(
+            children: [
+              IconButton(
+                enableFeedback: false,
+                onPressed: () {
+                  setState(() {
+                    pageIndex = 2;
+                  });
+                },
+                icon: pageIndex == 2
+                    ? const Icon(
+                        Icons.info,
+                        color: Colors.white,
+                        size: 30,
+                      )
+                    : const Icon(
+                        Icons.info_outline,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+              ),
+              Text(
+                "INFO",
+                style: TextStyle(
+                    fontFamily: 'saira',
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              )
+            ],
           ),
-
         ],
       ),
     );
