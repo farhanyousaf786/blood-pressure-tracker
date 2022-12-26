@@ -8,7 +8,7 @@ void main() async {
   var db = DatabaseConnect();
   //insert simple rec
   await db.insertBpRecord(BpInfo(
-      id: 1,
+      id: 2,
       sys: "100",
       dia: "100",
       pulse: "50",
