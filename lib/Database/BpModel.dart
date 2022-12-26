@@ -1,4 +1,4 @@
-class bPInfo {
+class BpInfo {
   int? id;
   late String sys;
   late String dia;
@@ -7,7 +7,7 @@ class bPInfo {
 
 
   // create the constructor
-  bPInfo({
+  BpInfo({
     this.id,
     required this.sys,
     required this.dia,
