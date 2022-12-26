@@ -1,5 +1,7 @@
 import 'package:bloodpressure/Components/HistoryCard.dart';
 import 'package:bloodpressure/Components/ShowBpRecord.dart';
+import 'package:bloodpressure/Database/BpModel.dart';
+import 'package:bloodpressure/Database/DbModel.dart';
 import 'package:flutter/material.dart';
 
 class History extends StatefulWidget {
@@ -10,6 +12,8 @@ class History extends StatefulWidget {
 }
 
 class _HistoryState extends State<History> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,8 +25,6 @@ class _HistoryState extends State<History> {
                 fontSize: 25, fontWeight: FontWeight.bold, fontFamily: 'saira'),
           ),
         ),
-        body: Container(
-          height: 600,
-            child: const ShowBpRecord()));
+        body: const ShowBpRecord());
   }
 }

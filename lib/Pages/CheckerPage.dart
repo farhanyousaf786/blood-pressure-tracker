@@ -2,7 +2,11 @@ import 'package:bloodpressure/Components/Diastolic.dart';
 import 'package:bloodpressure/Components/Explaination.dart';
 import 'package:bloodpressure/Components/Pulse.dart';
 import 'package:bloodpressure/Components/SystolicNum.dart';
+import 'package:bloodpressure/Database/BpModel.dart';
+import 'package:bloodpressure/Pages/HistoryPage.dart';
 import 'package:flutter/material.dart';
+
+import '../Database/DbModel.dart';
 
 class CheckerPage extends StatefulWidget {
   const CheckerPage({Key? key}) : super(key: key);
@@ -18,7 +22,7 @@ class _CheckerPageState extends State<CheckerPage> {
   String bloodPressure = "Normal Blood Pressure";
   Color currentColor = Colors.green;
   String currentState = "normal";
-
+  History history = const History();
   String text =
       "Blood pressure numbers of less than 120/80 mm Hg are considered within the normal range. If your results fall into this category, stick with heart-healthy habits like following a balanced diet and getting regular exercise.";
 
@@ -166,8 +170,13 @@ class _CheckerPageState extends State<CheckerPage> {
             SizedBox(
               width: MediaQuery.of(context).size.width / 2,
               child: ElevatedButton(
-                onPressed: () {},
-                child: Text(
+                onPressed: () {
+
+                 var bpInfo = BpInfo(sys: _currentSys.toString(), dia: _currentDia.toString(), pulse: _currentPulse.toString(), creationDate: DateTime.now());
+                 addItem(bpInfo);
+
+                },
+                child: const Text(
                   "SAVE IT",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
@@ -181,4 +190,14 @@ class _CheckerPageState extends State<CheckerPage> {
       ),
     );
   }
+
+  // create a database object so we can access database functions
+  var db = DatabaseConnect();
+  // function to add BP
+  void addItem(BpInfo bpInfo) async {
+    await db.insertBpRecord(bpInfo);
+    setState(() {});
+  }
+
+
 }
