@@ -4,6 +4,7 @@ import 'package:bloodpressure/Components/Pulse.dart';
 import 'package:bloodpressure/Components/SystolicNum.dart';
 import 'package:bloodpressure/Database/BpModel.dart';
 import 'package:bloodpressure/Pages/HistoryPage.dart';
+import 'package:bloodpressure/Pages/LandingPage.dart';
 import 'package:flutter/material.dart';
 
 import '../Database/DbModel.dart';
@@ -112,6 +113,18 @@ class _CheckerPageState extends State<CheckerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pushAndRemoveUntil<dynamic>(
+              context,
+              MaterialPageRoute<dynamic>(
+                builder: (BuildContext context) => LandingPage(),
+              ),
+                  (route) => false,//if you want to disable back feature set to false
+            );
+          },
+          child: Icon(Icons.arrow_back_ios_new),
+        ),
         elevation: 0.0,
         centerTitle: true,
         title: const Text(
@@ -200,7 +213,7 @@ class _CheckerPageState extends State<CheckerPage> {
   // function to add BP
   void addItem(BpInfo bpInfo) async {
     await db.insertBpRecord(bpInfo);
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) =>  const History()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const History()));
   }
 }

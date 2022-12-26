@@ -25,7 +25,7 @@ class _MaxMinCardState extends State<MaxMinCard> {
   @override
   void initState() {
     getStats();
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         isLoading = false;
       });
@@ -50,10 +50,16 @@ class _MaxMinCardState extends State<MaxMinCard> {
     print(sysList.reduce(max));
     print(diaList.reduce(min));
     print(pulseList.reduce(min));
+
+
   }
 
   @override
   Widget build(BuildContext context) {
-    return Text(widget.data.toString());
+    return isLoading ? const Center(child: Text("Loading Data...")) : Column(
+      children: [
+        Text(widget.data.toString()),
+      ],
+    );
   }
 }

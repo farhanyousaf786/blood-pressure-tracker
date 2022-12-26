@@ -10,6 +10,14 @@ class GeneralStats extends StatefulWidget {
 }
 
 class _GeneralStatsState extends State<GeneralStats> {
+
+  @override
+  void initState() {
+    setState(() {
+      print("refrsh");
+    });
+    super.initState();
+  }
   var db = DatabaseConnect();
 
   @override
@@ -31,16 +39,29 @@ class _GeneralStatsState extends State<GeneralStats> {
             var data = snapshot.data;
             var dataLength = data!.length;
             return dataLength == 0
-                ? const Center(
+                ?  Center(
                     child: Padding(
                       padding: EdgeInsets.all(12.0),
-                      child: Text(
-                        "No Record Found!",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.blue,
-                        ),
+                      child: Column(
+                        children: [
+                          Material(
+                            elevation: 5,
+                            borderRadius: BorderRadius.circular(10),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height/5,
+                              width: MediaQuery.of(context).size.width/1.01,
+                              child: const Text(
+                                "No Record Found!",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.blue,
+                                  fontFamily: 'bal'
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   )
