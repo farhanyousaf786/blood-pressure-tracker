@@ -44,13 +44,8 @@ class _GeneralStatsState extends State<GeneralStats> {
                       ),
                     ),
                   )
-                : ListView.builder(
-                    itemCount: dataLength,
-                    itemBuilder: (context, i) {
-                      return MaxMinCard(
-                        data: data,
-                      );
-                    },
+                : MaxMinCard(
+                    data: data,
                   );
           },
         ));
