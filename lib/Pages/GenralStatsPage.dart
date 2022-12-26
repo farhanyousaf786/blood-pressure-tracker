@@ -22,6 +22,14 @@ class _GeneralStatsState extends State<GeneralStats> {
           fontFamily: 'saira'
         ),
       ),
-    ),);
+    ),
+      body: Column(
+        children: [
+          Container(
+            child: Text("TOP 3"),
+          ),
+        ],
+      ),
+    );
   }
 }

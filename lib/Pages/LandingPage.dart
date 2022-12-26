@@ -1,3 +1,4 @@
+import 'package:bloodpressure/Pages/CheckerPage.dart';
 import 'package:bloodpressure/Pages/GenralStatsPage.dart';
 import 'package:bloodpressure/Pages/HistoryPage.dart';
 import 'package:bloodpressure/Pages/InformationPage.dart';
@@ -25,6 +26,20 @@ class _LandingPageState extends State<LandingPage> {
       backgroundColor: const Color(0xffC4DFCB),
       body: pages[pageIndex],
       bottomNavigationBar: buildMyNavBar(context),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: FloatingActionButton(
+          // isExtended: true,
+          child: const Icon(Icons.add,
+          size: 30,),
+          backgroundColor: Colors.blue,
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const CheckerPage()));
+          },
+        ),
+      ),
     );
   }
 

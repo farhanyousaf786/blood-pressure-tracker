@@ -12,8 +12,19 @@ class InformationPage extends StatefulWidget {
 class _InformationPageState extends State<InformationPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(
-      title: Text("Information Page"),
-    ),);
+    return Scaffold(appBar:  AppBar(
+      centerTitle: true,
+      title: Text(
+        "INFORMATION",
+        style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'saira'
+        ),
+      ),
+    ),
+
+
+    );
   }
 }

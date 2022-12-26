@@ -12,8 +12,16 @@ class History extends StatefulWidget {
 class _HistoryState extends State<History> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(
-      title: Text("History"),
+    return Scaffold(appBar:  AppBar(
+      centerTitle: true,
+      title: Text(
+        "HISTORY",
+        style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'saira'
+        ),
+      ),
     ),);
   }
 }
