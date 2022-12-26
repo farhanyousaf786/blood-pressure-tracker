@@ -1,3 +1,4 @@
+import 'package:bloodpressure/Components/SystolicNum.dart';
 import 'package:flutter/material.dart';
 
 class CheckerPage extends StatefulWidget {
@@ -19,7 +20,11 @@ class _CheckerPageState extends State<CheckerPage> {
               fontSize: 25, fontWeight: FontWeight.bold, fontFamily: 'saira'),
         ),
       ),
-      body: Text("RECORD"),
+      body: Container(child: Row(
+        children: [
+          SystolicNum(),
+        ],
+      )),
     );
   }
 }

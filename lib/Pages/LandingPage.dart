@@ -36,7 +36,7 @@ class _LandingPageState extends State<LandingPage> {
           backgroundColor: Colors.blue,
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const CheckerPage()));
+                MaterialPageRoute(builder: (context) =>  CheckerPage()));
           },
         ),
       ),
