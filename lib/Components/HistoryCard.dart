@@ -1,6 +1,6 @@
 import 'package:bloodpressure/Database/DbModel.dart';
 import 'package:flutter/material.dart';
-
+import 'package:intl/intl.dart';
 import '../Database/BpModel.dart';
 
 class HistoryCard extends StatefulWidget {
@@ -26,8 +26,6 @@ class HistoryCard extends StatefulWidget {
 }
 
 class _HistoryCardState extends State<HistoryCard> {
-
-
   @override
   Widget build(BuildContext context) {
     var anOtherBpInfo = BpInfo(
@@ -55,9 +53,12 @@ class _HistoryCardState extends State<HistoryCard> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(widget.creationDate.toString()),
+              Text(
+                DateFormat('dd MMM yyyy - hh:mm aaa')
+                    .format(widget.creationDate),
+              ),
               IconButton(
-                onPressed: ()=> widget.deleteFunction(anOtherBpInfo),
+                onPressed: () => widget.deleteFunction(anOtherBpInfo),
                 icon: const Icon(Icons.close),
               ),
             ],
@@ -66,5 +67,4 @@ class _HistoryCardState extends State<HistoryCard> {
       ],
     );
   }
-
 }

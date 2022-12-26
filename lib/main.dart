@@ -5,15 +5,7 @@ import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  var db = DatabaseConnect();
-  //insert simple rec
-  await db.insertBpRecord(BpInfo(
-      id: 2,
-      sys: "100",
-      dia: "100",
-      pulse: "50",
-      creationDate: DateTime.now()));
-  print(await db.getBpRecord());
+
   runApp(const MyApp());
 }
 

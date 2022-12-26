@@ -171,10 +171,12 @@ class _CheckerPageState extends State<CheckerPage> {
               width: MediaQuery.of(context).size.width / 2,
               child: ElevatedButton(
                 onPressed: () {
-
-                 var bpInfo = BpInfo(sys: _currentSys.toString(), dia: _currentDia.toString(), pulse: _currentPulse.toString(), creationDate: DateTime.now());
-                 addItem(bpInfo);
-
+                  var bpInfo = BpInfo(
+                      sys: _currentSys.toString(),
+                      dia: _currentDia.toString(),
+                      pulse: _currentPulse.toString(),
+                      creationDate: DateTime.now());
+                  addItem(bpInfo);
                 },
                 child: const Text(
                   "SAVE IT",
@@ -193,11 +195,11 @@ class _CheckerPageState extends State<CheckerPage> {
 
   // create a database object so we can access database functions
   var db = DatabaseConnect();
+
   // function to add BP
   void addItem(BpInfo bpInfo) async {
     await db.insertBpRecord(bpInfo);
-    setState(() {});
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) =>  const History()));
   }
-
-
 }

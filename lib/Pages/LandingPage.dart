@@ -29,16 +29,16 @@ class _LandingPageState extends State<LandingPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: FloatingActionButton(
+        child: pageIndex == 0 ?  FloatingActionButton(
           // isExtended: true,
-          child: const Icon(Icons.add,
+          child:  Icon(Icons.add,
           size: 30,),
           backgroundColor: Colors.blue,
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) =>  CheckerPage()));
+                MaterialPageRoute(builder: (context) =>  const CheckerPage()));
           },
-        ),
+        ): null,
       ),
     );
   }
@@ -71,7 +71,7 @@ class _LandingPageState extends State<LandingPage> {
                         size: 30,
                       ),
               ),
-              Text(
+              const Text(
                 "TRACKER",
                 style: TextStyle(
                     fontFamily: 'saira',
