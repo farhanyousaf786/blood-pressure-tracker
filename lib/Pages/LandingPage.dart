@@ -10,7 +10,16 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        centerTitle: true,
+        title: Text("Tracker",
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 26,
+        ),),
+      ),
       body: Text("Landing Page"),
     );
   }
