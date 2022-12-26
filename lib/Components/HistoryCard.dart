@@ -1,7 +1,24 @@
 import 'package:flutter/material.dart';
 
 class HistoryCard extends StatefulWidget {
-  const HistoryCard({Key? key}) : super(key: key);
+  final int id;
+  final String sys;
+  final String dia;
+  final String pulse;
+  final String dateCreation;
+  final Function insertFunction;
+  final Function deleteFunction;
+
+  const HistoryCard(
+      {Key? key,
+      required this.id,
+      required this.sys,
+      required this.dia,
+      required this.pulse,
+      required this.dateCreation,
+      required this.insertFunction,
+      required this.deleteFunction})
+      : super(key: key);
 
   @override
   State<HistoryCard> createState() => _HistoryCardState();
