@@ -5,7 +5,7 @@ class HistoryCard extends StatefulWidget {
   final String sys;
   final String dia;
   final String pulse;
-  final String dateCreation;
+  final String creationDate;
   final Function insertFunction;
   final Function deleteFunction;
 
@@ -15,7 +15,7 @@ class HistoryCard extends StatefulWidget {
       required this.sys,
       required this.dia,
       required this.pulse,
-      required this.dateCreation,
+      required this.creationDate,
       required this.insertFunction,
       required this.deleteFunction})
       : super(key: key);

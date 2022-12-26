@@ -1,4 +1,5 @@
 import 'package:bloodpressure/Components/HistoryCard.dart';
+import 'package:bloodpressure/Components/ShowBpRecord.dart';
 import 'package:flutter/material.dart';
 
 class History extends StatefulWidget {
@@ -20,6 +21,8 @@ class _HistoryState extends State<History> {
                 fontSize: 25, fontWeight: FontWeight.bold, fontFamily: 'saira'),
           ),
         ),
-        body: const HistoryCard());
+        body: Container(
+          height: 600,
+            child: const ShowBpRecord()));
   }
 }
