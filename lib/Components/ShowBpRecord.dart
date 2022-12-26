@@ -36,6 +36,7 @@ class _ShowBpRecordState extends State<ShowBpRecord> {
                       sys: data[i].sys,
                       dia: data[i].dia,
                       pulse: data[i].pulse,
+                      bpCondition: data[i].bpCondition,
                       creationDate: data[i].creationDate,
                       deleteFunction: deleteItem);
                 },

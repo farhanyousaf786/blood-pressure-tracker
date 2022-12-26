@@ -83,6 +83,9 @@ flutter:
     - family: saira
       fonts:
         - asset: assets/fonts/Saira-Regular.ttf
+    - family: bal
+      fonts:
+        - asset: assets/fonts/BalsamiqSans-Regular.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

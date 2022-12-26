@@ -175,6 +175,7 @@ class _CheckerPageState extends State<CheckerPage> {
                       sys: _currentSys.toString(),
                       dia: _currentDia.toString(),
                       pulse: _currentPulse.toString(),
+                      bpCondition: bloodPressure,
                       creationDate: DateTime.now());
                   addItem(bpInfo);
                 },

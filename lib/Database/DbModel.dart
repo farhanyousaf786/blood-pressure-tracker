@@ -32,6 +32,7 @@ class DatabaseConnect {
         sys TEXT,
         dia TEXT,
         pulse TEXT,
+        bpCondition TEXT,
         creationDate TEXT
       )
     ''');
@@ -80,6 +81,7 @@ class DatabaseConnect {
         sys: items[i]['sys'],
         dia: items[i]['dia'],
         pulse: items[i]['pulse'],
+        bpCondition: items[i]['bpCondition'],
         creationDate: DateTime.parse(items[i][
         'creationDate']), // this is in Text format right now. let's convert it to dateTime format
 
