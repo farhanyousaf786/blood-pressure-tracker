@@ -44,114 +44,132 @@ class _HistoryCardState extends State<HistoryCard> {
         elevation: 8.0,
         borderRadius: BorderRadius.circular(10),
         color: Colors.blue.shade100,
-        child: Row(
+        child: Column(
           children: [
-            Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(Icons.favorite,
-                      size: 50,
-                      color: widget.bpCondition == "Normal Blood Pressure"
-                          ? Colors.green
-                          : widget.bpCondition == "Elevated Blood Pressure"
-                              ? Colors.yellow.shade700
-                              : widget.bpCondition ==
-                                      "High Blood Pressure - Stage 1"
-                                  ? Colors.orangeAccent.shade400
-                                  : widget.bpCondition ==
-                                          "High Blood Pressure - Stage 2"
-                                      ? Colors.deepOrange.shade400
-                                      : Colors.red.shade700),
-                ),
-              ],
-            ),
+            // Column(
+            //   children: [
+            //     Padding(
+            //       padding: EdgeInsets.all(8.0),
+            //       child: Icon(Icons.favorite,
+            //           size: 50,
+            //           color: widget.bpCondition == "Normal Blood Pressure"
+            //               ? Colors.green
+            //               : widget.bpCondition == "Elevated Blood Pressure"
+            //                   ? Colors.yellow.shade700
+            //                   : widget.bpCondition ==
+            //                           "High Blood Pressure - Stage 1"
+            //                       ? Colors.orangeAccent.shade400
+            //                       : widget.bpCondition ==
+            //                               "High Blood Pressure - Stage 2"
+            //                           ? Colors.deepOrange.shade400
+            //                           : Colors.red.shade700),
+            //     ),
+            //   ],
+            // ),
             Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text(
-                      widget.bpCondition,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'bal',
-                          fontSize: 18),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      const Text(
-                        "Systolic",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'bal',
-                            fontSize: 17),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          widget.sys,
-                          style: const TextStyle(fontFamily: 'bal', fontSize: 16),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Text(
-                        "Diastolic",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'bal',
-                            fontSize: 17),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          widget.dia,
-                          style: TextStyle(fontFamily: 'bal', fontSize: 16),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Text(
-                        "Pulse",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'bal',
-                            fontSize: 17),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          widget.pulse,
-                          style: const TextStyle(fontFamily: 'bal', fontSize: 16),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(3.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                DateFormat('hh:mm aaa - dd/MMM/yyyy')
+                    .format(widget.creationDate),
+                style: const TextStyle(
+                    fontFamily: 'bal',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12,
+                    color: Colors.black54),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  color: widget.bpCondition == "Normal Blood Pressure"
+                      ? Colors.green.shade500
+                      : widget.bpCondition == "Elevated Blood Pressure"
+                          ? Colors.yellow.shade500
+                          : widget.bpCondition ==
+                                  "High Blood Pressure - Stage 1"
+                              ? Colors.orangeAccent.shade200
+                              : widget.bpCondition ==
+                                      "High Blood Pressure - Stage 2"
+                                  ? Colors.deepOrange.shade300
+                                  : Colors.red.shade500,
+                  borderRadius: BorderRadius.circular(20)),
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 9, bottom: 9),
+              child: Text(
+                widget.bpCondition,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'bal',
+                    fontSize: 15),
+              ),
+            ),
+
+            Row(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width/2,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 30, top: 10, bottom: 15),
+                    child: Column(
                       children: [
-                        Text(
-                          DateFormat('dd MMM yyyy - hh:mm aaa')
-                              .format(widget.creationDate),
+                        Row(
+
+                          children: [
+                            Text(
+                              "${widget.sys} ",
+                              style: const TextStyle(
+                                  fontFamily: 'bal',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            const Text(
+                              "Systolic",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'bal',
+                                  fontSize: 15),
+                            ),
+                          ],
                         ),
-                        IconButton(
-                          onPressed: () => widget.deleteFunction(anOtherBpInfo),
-                          icon: const Icon(Icons.close),
+                        Row(
+                          children: [
+                            Text(
+                              "${widget.dia} ",
+                              style: TextStyle(
+                                  fontFamily: 'bal',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            const Text(
+                              "Diastolic",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'bal',
+                                  fontSize: 15),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "${widget.pulse} ",
+                              style: const TextStyle(
+                                  fontFamily: 'bal',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            const Text(
+                              "Pulse",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'bal',
+                                  fontSize: 15),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  )
-                ],
-              ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
