@@ -29,17 +29,25 @@ class _LandingPageState extends State<LandingPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: pageIndex == 0 ?  FloatingActionButton(
-          // isExtended: true,
-          backgroundColor: Colors.blue,
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) =>  const CheckerPage()));
-          },
-          // isExtended: true,
-          child:  const Icon(Icons.add,
-          size: 30,),
-        ): null,
+        child: pageIndex == 0
+            ? FloatingActionButton(
+                // isExtended: true,
+                backgroundColor: Colors.blue,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CheckerPage(),
+                    ),
+                  );
+                },
+                // isExtended: true,
+                child: const Icon(
+                  Icons.add,
+                  size: 30,
+                ),
+              )
+            : null,
       ),
     );
   }
@@ -78,7 +86,7 @@ class _LandingPageState extends State<LandingPage> {
                     fontFamily: 'saira',
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                fontSize: 12),
+                    fontSize: 12),
               )
             ],
           ),
@@ -109,7 +117,7 @@ class _LandingPageState extends State<LandingPage> {
                     fontFamily: 'saira',
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                fontSize: 12),
+                    fontSize: 12),
               )
             ],
           ),
@@ -140,7 +148,7 @@ class _LandingPageState extends State<LandingPage> {
                     fontFamily: 'saira',
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                fontSize: 12),
+                    fontSize: 12),
               )
             ],
           ),

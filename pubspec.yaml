@@ -40,6 +40,8 @@ dependencies:
   sqflite: ^2.0.0+4
   path: ^1.8.0
   intl: ^0.17.0
+  unity_ads_plugin: ^0.3.7
+  facebook_audience_network: ^1.0.1
 
 dev_dependencies:
   flutter_test:
