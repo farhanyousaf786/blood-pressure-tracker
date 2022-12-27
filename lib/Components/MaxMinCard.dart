@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:bloodpressure/AddManager/adManager.dart';
+import 'package:facebook_audience_network/ad/ad_native.dart';
+import 'package:facebook_audience_network/facebook_audience_network.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:unity_ads_plugin/unity_ads_plugin.dart';
@@ -30,6 +32,10 @@ class _MaxMinCardState extends State<MaxMinCard> {
   @override
   void initState() {
     getStats();
+    FacebookAudienceNetwork.init();
+
+    _showNativeBannerAd();
+
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         isLoading = false;
@@ -50,6 +56,34 @@ class _MaxMinCardState extends State<MaxMinCard> {
           print('Initialization Failed: $error $message'),
     );
     super.initState();
+  }
+
+
+
+
+  Widget _currentAd = SizedBox(
+    width: 0.0,
+    height: 0.0,
+  );
+
+
+  _showNativeBannerAd() {
+    setState(() {
+      _currentAd = _nativeBannerAd();
+    });
+  }
+
+  Widget _nativeBannerAd() {
+    return FacebookNativeAd(
+      placementId: "1316724952486390_1316726292486256",
+      // placementId: "IMG_16_9_APP_INSTALL#2312433698835503_2964953543583512",
+      adType: NativeAdType.NATIVE_BANNER_AD,
+      bannerAdSize: NativeBannerAdSize.HEIGHT_100,
+      height: 110,
+      listener: (result, value) {
+        print("Native Banner Ad: $result --> $value");
+      },
+    );
   }
 
   getStats() {
@@ -332,14 +366,24 @@ class _MaxMinCardState extends State<MaxMinCard> {
                     SizedBox(
                       height: 30,
                     ),
-                    UnityBannerAd(
-                      placementId: AdManager.bannerAdPlacementId,
-                      onLoad: (placementId) =>
-                          print('Banner loaded: $placementId'),
-                      onClick: (placementId) =>
-                          print('Banner clicked: $placementId'),
-                      onFailed: (placementId, error, message) => print(
-                          'Banner Ad $placementId failed: $error $message'),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: UnityBannerAd(
+                        placementId: AdManager.bannerAdPlacementId,
+                        onLoad: (placementId) =>
+                            print('Banner loaded: $placementId'),
+                        onClick: (placementId) =>
+                            print('Banner clicked: $placementId'),
+                        onFailed: (placementId, error, message) => print(
+                            'Banner Ad $placementId failed: $error $message'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment(0, 1.0),
+                        child: _currentAd,
+                      ),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height / 2,

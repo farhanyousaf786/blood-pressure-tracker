@@ -1,6 +1,7 @@
 import 'package:bloodpressure/Components/MaxMinCard.dart';
 import 'package:bloodpressure/Database/DbModel.dart';
 import 'package:bloodpressure/Pages/LandingPage.dart';
+import 'package:facebook_audience_network/ad/ad_native.dart';
 import 'package:flutter/material.dart';
 
 class GeneralStats extends StatefulWidget {
@@ -13,10 +14,33 @@ class GeneralStats extends StatefulWidget {
 class _GeneralStatsState extends State<GeneralStats> {
   @override
   void initState() {
-    setState(() {
-      print("refrsh");
-    });
+    _showNativeBannerAd();
+    setState(() {});
     super.initState();
+  }
+
+  Widget _currentAd = SizedBox(
+    width: 0.0,
+    height: 0.0,
+  );
+
+  _showNativeBannerAd() {
+    setState(() {
+      _currentAd = _nativeBannerAd();
+    });
+  }
+
+  Widget _nativeBannerAd() {
+    return FacebookNativeAd(
+      placementId: "1316724952486390_1316746842484201",
+      // placementId: "IMG_16_9_APP_INSTALL#2312433698835503_2964953543583512",
+      adType: NativeAdType.NATIVE_BANNER_AD,
+      bannerAdSize: NativeBannerAdSize.HEIGHT_100,
+      height: 110,
+      listener: (result, value) {
+        print("Native Banner Ad: $result --> $value");
+      },
+    );
   }
 
   var db = DatabaseConnect();
@@ -283,19 +307,26 @@ class _GeneralStatsState extends State<GeneralStats> {
                                             color: Colors.white,
                                             fontFamily: 'bal'),
                                       ),
-                                      Icon(Icons.refresh,
-                                      size: 18,
-                                      color: Colors.white,),
+                                      Icon(
+                                        Icons.refresh,
+                                        size: 18,
+                                        color: Colors.white,
+                                      ),
                                     ],
                                   ),
                                 ),
                               ),
                             ),
-
-
-                            Text("ads"),
-
-
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Align(
+                                alignment: Alignment(0, 1.0),
+                                child: _currentAd,
+                              ),
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height / 3,
+                            )
                           ],
                         ),
                       ),
