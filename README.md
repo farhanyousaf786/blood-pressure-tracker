@@ -6,10 +6,10 @@ Blood Pressure Tracker is an application to monitor your health developed by Dou
 ## Screens
 
 <p float="left">
-<img src="https://imgur.com/40roVLy.png" width="200" height="400" />
 <img src="https://imgur.com/YhDUpVa.png" width="200" height="400" />
 <img src="https://imgur.com/393YnAn.png" width="200" height="400" />
 <img src="https://imgur.com/ZeF3bZL.png" width="200" height="400" />
+ <img src="https://imgur.com/40roVLy.png" width="700" height="400" />
 </p>
 
 ### Launch Here
